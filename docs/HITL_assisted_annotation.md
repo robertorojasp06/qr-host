@@ -29,7 +29,7 @@ Con el objetivo de acelerar el proceso de anotación, se diseñó e implementó 
 # Implementación en 3D Slicer
 
 <figure style="text-align: center;">
-  <video src="assets/hitl_segmentation_assistant_3d_slicer.mp4" width="600" controls loop muted>
+  <video src="assets/hitl_segmentation_assistant_3d_slicer.mp4" style="max-width: 100%; height: auto;" controls loop muted>
     Your browser does not support the video tag.
   </video>
   <figcaption style="text-align: justify; max-width: 800px; margin: 0 auto;">
@@ -47,7 +47,7 @@ Con el objetivo de acelerar el proceso de anotación, se diseñó e implementó 
 # Evolución del Desempeño con los ciclos HITL
 
 <figure style="text-align: center;">
-  <video src="assets/hitl_medsam_evolution.mp4" width="600" controls loop muted>
+  <video src="assets/hitl_medsam_evolution.mp4" style="max-width: 100%; height: auto;" controls loop muted>
     Your browser does not support the video tag.
   </video>
   <figcaption style="text-align: justify; max-width: 800px; margin: 0 auto;">
