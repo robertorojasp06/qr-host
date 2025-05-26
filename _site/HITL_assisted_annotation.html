@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Human-In-The-Loop (HITL) | My QR Site</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Human-In-The-Loop (HITL)" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hosting files for QR codes" />
+<meta property="og:description" content="Hosting files for QR codes" />
+<link rel="canonical" href="http://localhost:4000/HITL_assisted_annotation.html" />
+<meta property="og:url" content="http://localhost:4000/HITL_assisted_annotation.html" />
+<meta property="og:site_name" content="My QR Site" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Human-In-The-Loop (HITL)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Hosting files for QR codes","headline":"Human-In-The-Loop (HITL)","url":"http://localhost:4000/HITL_assisted_annotation.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="My QR Site" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">My QR Site</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/HITL_assisted_annotation.html">Human-In-The-Loop (HITL)</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Human-In-The-Loop (HITL)</h1>
+  </header>
+
+  <div class="post-content">
+    <style>
+/* Only affects paragraph text */
+.page-content p {
+  text-align: justify;
+}
+</style>
+
+<h1 id="human-in-the-loop-una-estrategia-para-la-anotación-asistida-de-tumores-en-imágenes-de-tomografía-computarizada-tc">Human-In-The-Loop: una estrategia para la Anotación Asistida de Tumores en imágenes de Tomografía Computarizada (TC)</h1>
+
+<p>Durante los últimos años, los modelos basados en Inteligencia Artificial han demostrado un gran potencial en el reconomicimiento de patrones para el análisis de imágenes médicas. Muchos de estos modelos han sido entrenados bajo la estrategia de <em>Aprendizaje Supervisado</em>, lo que significa ajustar el comportamiento del modelo en base a la muestra de ejemplos junto con el resultado esperado. Estos resultados esperados suelen conocerse con el nombre de <em>etiquetas</em>, y para el caso de Segmentación de Tumores, corresponde a la imagen o máscara que identifica las regiones de voxeles pertenecientes a cada tumor. Como anotar pixeles es demandante en términos de tiempo, <strong>la anotación de ejemplos para resolver problemas de segmentación constituye un cuello de botella</strong> en el desarrollo de modelos basados en IA bajo la estrategia de Aprendizaje Supervisado.</p>
+
+<p>Con el objetivo de acelerar el proceso de anotación, se diseñó e implementó el proceso iterativo <em>Human-In-The-Loop</em>, caracterizado por tener:</p>
+<ul>
+  <li><strong>Anotación Asistida</strong> por un modelo de IA que funciona en base <em>prompts</em>, donde el anotador indica la ubicación del tumor.</li>
+  <li><strong>Ciclos iterativos de anotación</strong>, que permiten re-entrenar el modelo de IA para el siguiente ciclo de anotación.</li>
+</ul>
+
+<figure>
+  <img src="assets/hitl_process.png" alt="HITL process" style="max-width:100%; height:auto;" />
+  <figcaption style="text-align: justify; max-width: 800px; margin: 0 auto;">
+    <b>Ciclos Human-In-The-Loop (HITL) para la anotación asistida de imágenes de TC.</b> Se utiliza el modelo fundacional <a href="https://doi.org/10.1109/CAI54212.2023.00137">MedSAM</a> como asistente de inteligencia artificial para generar segmentaciones iniciales a partir de indicaciones de recuadros (bounding boxes) trazadas por médicos residentes en radiología. Las segmentaciones generadas por MedSAM son corregidas por los residentes y posteriormente refinadas por radiólogos. Las máscaras mejoradas se emplean para re-entrenar el modelo MedSAM antes de iniciar un nuevo ciclo HITL.
+  </figcaption>
+</figure>
+
+<h1 id="implementación-en-3d-slicer">Implementación en 3D Slicer</h1>
+
+<figure style="text-align: center;">
+  <video src="assets/hitl_segmentation_assistant_3d_slicer.mp4" width="600" controls="" loop="" muted="">
+    Your browser does not support the video tag.
+  </video>
+  <figcaption style="text-align: justify; max-width: 800px; margin: 0 auto;">
+    <b>Anotación Asistida por MedSAM en 3D Slicer</b>. MedSAM se integra como un plugin en el software 3D Slicer, permitiendo la descarga, visualización y anotación de tumores en imágenes de TC. Los residentes de radiología encierran en una caja 3D el tumor observado, y MedSAM genera una segmentación preliminar que luego es refinada manualmente utilizando las herrmientas de edición integradas en 3D Slicer.
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="assets/data_examples_v2.png" alt="Examples of annotated tumors" style="max-width:100%; height:auto;" />
+  <figcaption style="text-align: justify; max-width: 800px; margin: 0 auto;">
+    <b>Ejemplos de tumores anotados.</b> De izquierda a derecha, las columnas muestran: un corte coronal del CT, un corte axial del CT, y una visualización 3D de todos los tumores segmentados, donde cada color representa un tumor distinto. La fila superior (a–c) corresponde a un estudio de tórax, mientras que la fila inferior (d–f) muestra un CT de abdomen y pelvis.
+  </figcaption>
+</figure>
+
+<h1 id="evolución-del-desempeño-con-los-ciclos-hitl">Evolución del Desempeño con los ciclos HITL</h1>
+
+<figure style="text-align: center;">
+  <video src="assets/hitl_medsam_evolution.mp4" width="600" controls="" loop="" muted="">
+    Your browser does not support the video tag.
+  </video>
+  <figcaption style="text-align: justify; max-width: 800px; margin: 0 auto;">
+    <b>Evolución del desempeño del Asistente de Anotación con los ciclos de anotación</b>. (a) Distribución de los coeficientes de Dice en función del tamaño de los tumores, obtenidos con el modelo MedSAM re-entrenado tras cada ciclo de anotación. Cada punto representa una caja delimitadora (bounding box) encerrando un tumor perteneciente al conjunto de test. El conjunto de test fue anotado de manera completamente manual, sin ayuda del Asistente de Anotación (b) Distribución de probabilidad del coeficiente de Dice después de cada ciclo de anotación, estimada mediante KDE con *kernels* gaussianos.
+  </figcaption>
+</figure>
+
+<figure style="text-align: center;">
+ <img src="assets/medsam_outputs.svg" alt="MedSAM output segmentations" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto;" />
+  <figcaption style="text-align: justify; max-width: 800px; margin: 0 auto;">
+    <b>Comparación entre las segmentaciones predichas (naranja) y las anotadas por radiólogos (amarillo).</b> El modelo MedSAM ajustado recibe un corte del TC y un bounding box (cian) para generar una máscara de segmentación como salida. La similitud entre las segmentaciones predichas y las de los radiólogos se mide mediante el coficiente de Dice (DSC). De arriba hacia abajo se muestran tumores pulmonares, tumores hepáticos y adenopatías.
+  </figcaption>
+</figure>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">My QR Site</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">My QR Site</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Hosting files for QR codes</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
