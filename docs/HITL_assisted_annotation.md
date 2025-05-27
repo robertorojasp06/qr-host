@@ -10,6 +10,13 @@ title: Human-In-The-Loop (HITL)
 }
 </style>
 
+<style>
+/* Hide the top-right navigation bar */
+.site-nav {
+  display: none;
+}
+</style>
+
 
 # Human-In-The-Loop: una estrategia para la Anotación Asistida de Tumores en imágenes de Tomografía Computarizada (TC)
 
